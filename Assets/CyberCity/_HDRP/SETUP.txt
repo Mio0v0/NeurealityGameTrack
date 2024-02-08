@@ -1,0 +1,6 @@
+
+Install:
+- double click on 'cybercityHDRP';
+- import to current Cyber City project;
+- replace all on import;
+- open demoscene: city 2021 HDRP!
