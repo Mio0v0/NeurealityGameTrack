@@ -21,7 +21,7 @@ Material:
   - SoftParticles_OFF
   - VertLight_OFF
   m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -113,6 +113,7 @@ Material:
     - _UseParticlesAlphaCutout: 0
     - _UseSoft: 0
     - _UseSoftCutout: 0
+    - _UseVertexLight: 0
     - _UseVertexStreamRandom: 0
     - _ZWrite: 1
     - _ZWriteMode: 0
