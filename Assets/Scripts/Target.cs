@@ -14,22 +14,23 @@ public class Target : MonoBehaviour
         FindAllRenderers(transform);
     }
 
+   
     void FindAllRenderers(Transform parent)
     {
+        // First, check the parent itself (this ensures it works even if the GameObject has no children)
+        MeshRenderer parentRenderer = parent.GetComponent<MeshRenderer>();
+        if (parentRenderer != null)
+        {
+            allRenderers.Add(parentRenderer);
+        }
+
+        // Then, recursively check all children
         foreach (Transform child in parent)
         {
-            MeshRenderer renderer = child.GetComponent<MeshRenderer>();
-            if (renderer != null)
-            {
-                allRenderers.Add(renderer);
-            }
-            // Recursively check for further children
-            if (child.childCount > 0)
-            {
-                FindAllRenderers(child);
-            }
+            FindAllRenderers(child);
         }
     }
+
 
     public void Flash()
     {
