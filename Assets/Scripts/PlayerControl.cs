@@ -4,6 +4,9 @@ public class PlayerControl : MonoBehaviour
 {
     public WeaponSwitching weaponSwitchingController;
     public WeaponSwitching weaponSwitchingHand;
+    public MotorImagery childActivator; 
+
+
 
     private WeaponSwitching activeWeaponSwitching;
 
@@ -32,6 +35,16 @@ public class PlayerControl : MonoBehaviour
             {
                 activeWeaponSwitching.SetSelectedWeapon(2);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            // Assuming the first child is at index 0
+            childActivator.ActivateChild(0, 20);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // Assuming the second child is at index 1
+            childActivator.ActivateChild(1, 20);
         }
     }
 
