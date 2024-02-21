@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 4009021476370998}
   - component: {fileID: 111035169446346324}
   - component: {fileID: 6588552884210488840}
+  - component: {fileID: -6745242198657271598}
   m_Layer: 0
   m_Name: robotz1 a
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,6 +157,20 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.68, z: 0}
+--- !u!114 &-6745242198657271598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390887919667286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb2fda3fd3adce4b9108462bfb58f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 2100000, guid: a1e6ac6581d32944f98b634f4b74fc0a, type: 2}
+  flashMaterial: {fileID: 2100000, guid: b866b2dafaa16594eb8198d65a1b8363, type: 2}
 --- !u!1 &1555637674791542
 GameObject:
   m_ObjectHideFlags: 0
