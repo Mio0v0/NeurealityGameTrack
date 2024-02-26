@@ -282,9 +282,10 @@ GameObject:
   - component: {fileID: 135461413446918488}
   - component: {fileID: -4968635970279486596}
   - component: {fileID: 8234305573055362478}
+  - component: {fileID: 7639254858838273812}
   m_Layer: 0
   m_Name: robotz3 c
-  m_TagString: Target
+  m_TagString: Drone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,6 +369,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7639254858838273812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347695279897312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb2fda3fd3adce4b9108462bfb58f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 2100000, guid: a1e6ac6581d32944f98b634f4b74fc0a, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 2664aa71df85e7247a08e331bb6d23df, type: 2}
 --- !u!1 &1692731072154328
 GameObject:
   m_ObjectHideFlags: 0

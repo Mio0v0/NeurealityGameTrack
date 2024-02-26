@@ -49,12 +49,9 @@ public class Gun : MonoBehaviour
             if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out hit, range))
             {
                 Target target = hit.transform.GetComponent<Target>();
-                if (target != null)
-                {   
-                    target.Flash(); // Call the Flash method on the target
-                }
-                if (hit.collider.CompareTag("Target"))
+                if (hit.collider.CompareTag("Target") || hit.collider.CompareTag("Robot"))
                 {
+                    target.Flash();
                     // Call AddScore on the player script, passing damage as points
                     score.AddScore((int)damage);
                 }

@@ -7,8 +7,9 @@ public class PlayerControl : MonoBehaviour
     public WeaponSwitching weaponSwitchingHand;
     public MotorImagery childActivator;
     public Camera mainCamera;
-
-
+    public float maxViewDistance = 100f;
+    public float fieldOfViewAngle = 110f;
+    public ScoreSystem score;
 
     private WeaponSwitching activeWeaponSwitching;
 
@@ -49,7 +50,60 @@ public class PlayerControl : MonoBehaviour
             // Assuming the second child is at index 1
             childActivator.ActivateChild(1, 20);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DestroyClosestTargetInView();
+        }
     }
+
+    void DestroyClosestTargetInView()
+    {
+        GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
+        GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
+
+        // Combine the robots and drones arrays
+        GameObject[] targets = new GameObject[robots.Length + drones.Length];
+        robots.CopyTo(targets, 0);
+        drones.CopyTo(targets, robots.Length);
+
+        GameObject closestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (GameObject target in targets)
+        {
+            Vector3 directionToTarget = target.transform.position - currentPosition;
+            float angle = Vector3.Angle(directionToTarget, transform.forward);
+            float sqrDistanceToTarget = directionToTarget.sqrMagnitude;
+
+            if (angle < fieldOfViewAngle * 0.5f && sqrDistanceToTarget < closestDistanceSqr && sqrDistanceToTarget <= maxViewDistance * maxViewDistance)
+            {
+               
+                
+                    closestDistanceSqr = sqrDistanceToTarget;
+                    closestTarget = target;
+          
+            }
+        }
+
+        if (closestTarget != null)
+        {
+            int scoreToAdd = 0; // Default score to add
+            if (closestTarget.CompareTag("Robot"))
+            {
+                scoreToAdd = 120; // Score value for Robot
+            }
+            else if (closestTarget.CompareTag("Drone"))
+            {
+                scoreToAdd = 240; // Score value for Drone
+            }
+
+            closestTarget.GetComponent<Target>().DestroySelf(); // Destroy the target
+            score.AddScore(scoreToAdd);
+        }
+    }
+
+
 
     IEnumerator StartCameraShake(float delay, float intensity, float duration)
     {

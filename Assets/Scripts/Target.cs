@@ -53,5 +53,23 @@ public class Target : MonoBehaviour
             renderer.material = originalMaterial;
         }
     }
+
+    public void DestroySelf()
+    {
+        // Add any additional logic here (e.g., play animations, sound effects)
+        StartCoroutine(DestroyAfterDelay(0.5f));
+    }
+
+    IEnumerator DestroyAfterDelay(float delay)
+    {
+        // Optionally, start your flash routine here if you want it to run during the delay
+        StartCoroutine(FlashRoutine());
+
+        // Wait for the specified delay
+        yield return new WaitForSeconds(delay);
+
+        // Then destroy the game object
+        Destroy(gameObject);
+    }
 }
 

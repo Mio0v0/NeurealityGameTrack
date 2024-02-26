@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Target
+  - Drone
+  - Robot
+  - AOE
+  - Bullet
   layers:
   - Default
   - TransparentFX

@@ -230,9 +230,10 @@ GameObject:
   - component: {fileID: 111072760948727476}
   - component: {fileID: 4391283163018345733}
   - component: {fileID: 6410047662240323348}
+  - component: {fileID: -3123130740357201258}
   m_Layer: 0
   m_Name: robotz1 b
-  m_TagString: Target
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,6 +307,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMaterial: {fileID: 2100000, guid: a1e6ac6581d32944f98b634f4b74fc0a, type: 2}
   flashMaterial: {fileID: 2100000, guid: b866b2dafaa16594eb8198d65a1b8363, type: 2}
+--- !u!114 &-3123130740357201258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488198434764672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbf0ce2caed6ae449ab54db062718cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Route: {fileID: 0}
+  IsLoop: 1
+  SpeedMove: 1
 --- !u!1 &1863200249409568
 GameObject:
   m_ObjectHideFlags: 0
