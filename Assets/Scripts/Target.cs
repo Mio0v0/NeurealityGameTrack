@@ -54,22 +54,37 @@ public class Target : MonoBehaviour
         }
     }
 
-    public void DestroySelf()
+    public void MakeInvisibleAndBack()
     {
         // Add any additional logic here (e.g., play animations, sound effects)
-        StartCoroutine(DestroyAfterDelay(0.5f));
+        StartCoroutine(InvisibleAfterDelay(0.5f));
     }
 
-    IEnumerator DestroyAfterDelay(float delay)
+    IEnumerator InvisibleAfterDelay(float delay)
     {
-        // Optionally, start your flash routine here if you want it to run during the delay
+       /* // Optionally, start your flash routine here if you want it to run during the delay
         StartCoroutine(FlashRoutine());
 
         // Wait for the specified delay
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay);*/
 
-        // Then destroy the game object
-        Destroy(gameObject);
+        // Make the game object invisible
+        SetVisibility(false);
+
+        // Wait for 8 seconds while the object is invisible
+        yield return new WaitForSeconds(8f);
+
+        // Then make the game object visible again
+        SetVisibility(true);
+    }
+
+    void SetVisibility(bool isVisible)
+    {
+    // Assuming allRenderers has been populated by FindAllRenderers method beforehand
+    foreach (MeshRenderer renderer in allRenderers)
+        {
+        renderer.enabled = isVisible;
+        }
     }
 }
 

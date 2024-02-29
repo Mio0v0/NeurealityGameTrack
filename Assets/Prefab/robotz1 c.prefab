@@ -91,7 +91,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017341615397136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32595e1c021181c40ab3ec3472609599, type: 3}
   m_Name: 
@@ -316,8 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   MaxBright: {r: 1.9705883, g: 1.36782, b: 0.4636677, a: 1}
-  SwitchTime: 0.15
-  SwitchModes: 1
+  SwitchTime: 0.05
+  SwitchModes: 0
   MatId: 0
 --- !u!1 &1284732070560320
 GameObject:
@@ -408,6 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMaterial: {fileID: 2100000, guid: a1e6ac6581d32944f98b634f4b74fc0a, type: 2}
   flashMaterial: {fileID: 2100000, guid: b866b2dafaa16594eb8198d65a1b8363, type: 2}
+  invisibleMaterial: {fileID: 0}
 --- !u!114 &-227053776489719272
 MonoBehaviour:
   m_ObjectHideFlags: 0

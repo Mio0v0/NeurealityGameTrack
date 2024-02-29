@@ -8,6 +8,7 @@ public class CCNeonFlash : MonoBehaviour
     [ColorUsageAttribute (true, true)]
     public Color MaxBright;
     public float SwitchTime = 0.1f;
+    private float timer;
     public enum SwitchMode
     {
         simple = 0,
@@ -30,17 +31,29 @@ public class CCNeonFlash : MonoBehaviour
     {
         if (IsActive)
         {
-            float random = Random.Range(0.07f, 0.95f);
-            InvokeRepeating("ColorSwitch", random, SwitchTime);
+            /*float random = Random.Range(0.07f, 0.95f);
+            InvokeRepeating("ColorSwitch", random, SwitchTime);*/
             _Material = GetComponent<Renderer>().materials[MatId];
+            mode = 0; // Start with mode 0
+            timer = 0f; // Initialize timer
         }
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate()
     {
-		
-	}
+        if (IsActive)
+        {
+            timer += Time.fixedDeltaTime; // Increment timer by the time between fixed updates
+
+            // Check if the timer has reached the switching time
+            if (timer >= SwitchTime)
+            {
+                ColorSwitch(); // Call the color switch function
+                timer = 0; // Reset the timer
+            }
+        }
+    }
 
     void ColorSwitch()
     {

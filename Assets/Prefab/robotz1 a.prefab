@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMaterial: {fileID: 2100000, guid: a1e6ac6581d32944f98b634f4b74fc0a, type: 2}
   flashMaterial: {fileID: 2100000, guid: b866b2dafaa16594eb8198d65a1b8363, type: 2}
+  invisibleMaterial: {fileID: 0}
 --- !u!114 &1753426588666106164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32595e1c021181c40ab3ec3472609599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
+  IsActive: 0
   MaxBright: {r: 0.64705884, g: 1.6081135, b: 2, a: 1}
   SwitchTime: 0.05
   SwitchModes: 0
@@ -419,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 1
-  MaxBright: {r: 2, g: 0.64705884, b: 1.1229209, a: 1}
-  SwitchTime: 0.15
-  SwitchModes: 1
+  MaxBright: {r: 0.64705884, g: 1.6081135, b: 2, a: 1}
+  SwitchTime: 0.05
+  SwitchModes: 0
   MatId: 0

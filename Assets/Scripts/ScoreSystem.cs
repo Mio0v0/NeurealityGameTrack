@@ -4,7 +4,7 @@ using UnityEngine.UI; // Required for working with UI elements
 
 public class ScoreSystem : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText; // Assign this in the inspector with your UI Text element
+    // public TextMeshProUGUI scoreText; // Assign this in the inspector with your UI Text element
     private int score = 0; // Initial score
 
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class ScoreSystem : MonoBehaviour
     // Method to update the score text UI
     private void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score.ToString();
+       /* scoreText.text = "Score: " + score.ToString();*/
+        Debug.Log("Current Score: " + score);
     }
 }

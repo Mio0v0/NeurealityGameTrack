@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public MotorImagery childActivator;
     public Camera mainCamera;
     public float maxViewDistance = 100f;
-    public float fieldOfViewAngle = 110f;
+    public float fieldOfViewAngle = 60f;
     public ScoreSystem score;
 
     private WeaponSwitching activeWeaponSwitching;
@@ -43,7 +43,6 @@ public class PlayerControl : MonoBehaviour
         {
             // Assuming the first child is at index 0
             childActivator.ActivateChild(0, 16);
-            StartCoroutine(StartCameraShake(3f, 3f, 12f));
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -52,37 +51,39 @@ public class PlayerControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DestroyClosestTargetInView();
+            MakeClosestTargetInvisibleAndBack();
         }
     }
 
-    void DestroyClosestTargetInView()
+    void MakeClosestTargetInvisibleAndBack()
     {
         GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
         GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
-
-        // Combine the robots and drones arrays
         GameObject[] targets = new GameObject[robots.Length + drones.Length];
         robots.CopyTo(targets, 0);
         drones.CopyTo(targets, robots.Length);
+        Vector3 cameraPosition = mainCamera.transform.position;
+        Vector3 cameraForward = mainCamera.transform.forward;
 
         GameObject closestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
+        float smallestAngle = 180f;
+        
 
         foreach (GameObject target in targets)
         {
-            Vector3 directionToTarget = target.transform.position - currentPosition;
-            float angle = Vector3.Angle(directionToTarget, transform.forward);
+            Vector3 directionToTarget = target.transform.position - cameraPosition;
+            float angle = Vector3.Angle(directionToTarget, cameraForward);
             float sqrDistanceToTarget = directionToTarget.sqrMagnitude;
 
-            if (angle < fieldOfViewAngle * 0.5f && sqrDistanceToTarget < closestDistanceSqr && sqrDistanceToTarget <= maxViewDistance * maxViewDistance)
+            if (angle <= smallestAngle)
             {
-               
-                
+                if (angle < smallestAngle || (angle == smallestAngle && sqrDistanceToTarget < closestDistanceSqr))
+                {
+                    smallestAngle = angle;
                     closestDistanceSqr = sqrDistanceToTarget;
                     closestTarget = target;
-          
+                }
             }
         }
 
@@ -98,45 +99,9 @@ public class PlayerControl : MonoBehaviour
                 scoreToAdd = 240; // Score value for Drone
             }
 
-            closestTarget.GetComponent<Target>().DestroySelf(); // Destroy the target
+            closestTarget.GetComponent<Target>().MakeInvisibleAndBack();
             score.AddScore(scoreToAdd);
         }
-    }
-
-
-
-    IEnumerator StartCameraShake(float delay, float intensity, float duration)
-    {
-        yield return new WaitForSeconds(delay);
-
-        StartCoroutine(CameraShake(intensity, duration)); // Start camera shake after the delay
-    }
-
-    IEnumerator CameraShake(float intensity, float duration)
-    {
-        float elapsed = 0.0f;
-
-        if (mainCamera == null)
-        {
-            Debug.LogError("Main camera not assigned!");
-            yield break;
-        }
-
-        Vector3 originalPos = mainCamera.transform.localPosition;
-
-        while (elapsed < duration)
-        {
-            float x = Random.Range(-intensity, intensity) * 0.02f; // Reduce intensity
-            float y = Random.Range(-intensity, intensity) * 0.02f; // Reduce intensity
-
-            mainCamera.transform.localPosition = originalPos + new Vector3(x, y, 0);
-
-            elapsed += Time.deltaTime;
-
-            yield return null;
-        }
-
-        mainCamera.transform.localPosition = originalPos; // Reset camera position
     }
 
     void DetermineActiveWeaponSwitching()
