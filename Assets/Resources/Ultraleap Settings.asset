@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leapSubsystemEnabled: 0
   updateLeapInputSystem: 0
-  updateMetaInputSystem: 1
+  updateMetaInputSystem: 0
   showAndroidBuildArchitectureWarning: 1
   showPhysicalHandsPhysicsSettingsWarning: 1
