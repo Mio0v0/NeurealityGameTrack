@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float fieldOfViewAngle = 60f;
     public ScoreSystem score;
 
-    private WeaponSwitching activeWeaponSwitching;
+    public WeaponSwitching activeWeaponSwitching;
 
     void Update()
     {

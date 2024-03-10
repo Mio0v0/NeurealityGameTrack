@@ -3,10 +3,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
+
 public class TCPClient : MonoBehaviour
 {
     string serverHost = "127.0.0.1";
     int serverPort = 65432;
+    public PlayerControl playerControl;
+    private int weaponIndex = 1;
 
     TcpClient client;
     NetworkStream stream;
@@ -44,6 +47,12 @@ public class TCPClient : MonoBehaviour
 
             string receivedMessage = Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead);
             Debug.Log($"Received from server: {receivedMessage}");
+            if (receivedMessage == "1")
+            {
+                playerControl.activeWeaponSwitching.SetSelectedWeapon(weaponIndex);
+                weaponIndex= (weaponIndex+1)%3;
+            }
+            
         }
     }
 
